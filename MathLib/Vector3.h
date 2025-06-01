@@ -19,6 +19,9 @@ public:
 
 
 //[Handle other vectors]
+	//[Warning] Use this memory to create a vector ONLY if the data is stored as three consecutive floats in the exact order: x, y, z.
+	// The memory must contain exactly 3 float values (not doubles, ints, or structs), tightly packed with no padding.
+	// Using memory with a different layout, data type, or extra components (e.g., a 'w' value) may lead to incorrect results or undefined behavior.
 	void CopyDataFromMemory(const void* someData);
 	static Vec3f ConstructFromMemory(const void* someData); 
 
