@@ -15,8 +15,7 @@ bool operator!=(const Vec3f& aDataOne, const Vec3f& aDataTwo)
 }
 Vec3f operator-(const Vec3f& aDataOne)
 {
-	__m128 mask = _mm_set1_ps(-0.0f);
-	return _mm_xor_ps(aDataOne.data, mask);
+	return _mm_xor_ps(aDataOne.data, _mm_set1_ps(-0.0f)); 
 }
 
 Vec3f operator+(const Vec3f& aDataOne, const Vec3f& aDataTwo)
@@ -36,14 +35,12 @@ Vec3f operator*(const Vec3f& aDataOne, const Vec3f& aDataTwo)
 
 Vec3f operator*(const Vec3f& aDataOne, const float& aScalar)
 {
-	__m128 scalarData = _mm_set1_ps(aScalar);
-	return _mm_mul_ps(aDataOne.data, scalarData);
+	return _mm_mul_ps(aDataOne.data, _mm_set1_ps(aScalar)); 
 }
 
 Vec3f operator*(const float& aScalar, const Vec3f& aDataOne)
 {
-	__m128 scalarData = _mm_set1_ps(aScalar);
-	return _mm_mul_ps(scalarData, aDataOne.data);
+	return _mm_mul_ps(_mm_set1_ps(aScalar), aDataOne.data);
 }
 
 inline Vec3f operator/(const Vec3f& aDataOne, const Vec3f& aDataTwo)
