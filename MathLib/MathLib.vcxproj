@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
+    <ClInclude Include="MathLibDoc.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Vector3.h" />
     <ClInclude Include="Vector\Vector3Inline.h" />

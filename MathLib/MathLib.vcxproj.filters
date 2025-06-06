@@ -27,6 +27,9 @@
     <ClInclude Include="Vector\Vector3Inline.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="MathLibDoc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">

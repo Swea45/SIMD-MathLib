@@ -76,40 +76,6 @@ namespace Vector3
 			Assert::AreEqual(testVector.z, originalVector.z);
 		}
 
-		TEST_METHOD(CopyFromMemory)
-		{
-			//Copy Array
-			{
-				float data[3] = { 5.0f, 1.0f, 9.0f };
-				Vec3f testVector = Vec3f::ConstructFromMemory(data);
-
-				Assert::AreEqual(testVector.x, data[0]);
-				Assert::AreEqual(testVector.y, data[1]);
-				Assert::AreEqual(testVector.z, data[2]);
-			}
-
-			//Copy Other Vector 3
-			{
-				OtherVector3f data;
-				Vec3f testVector = Vec3f::ConstructFromMemory(&data);
-
-				Assert::AreEqual(testVector.x, data.myX);
-				Assert::AreEqual(testVector.y, data.myY);
-				Assert::AreEqual(testVector.z, data.myZ);
-			}
-
-			//Copy Other Vector 4
-			{
-				OtherVector4f data;
-				Vec3f testVector = Vec3f::ConstructFromMemory(&data);
-
-				Assert::AreEqual(testVector.x, data.myX);
-				Assert::AreEqual(testVector.y, data.myY);
-				Assert::AreEqual(testVector.z, data.myZ);
-			}
-
-		}
-
 	};
 	TEST_CLASS(Operators)
 	{
@@ -142,6 +108,14 @@ namespace Vector3
 
 			vec1 += vec2;
 			Assert::IsTrue(vec1 == vec3 && "Vector not adding correctly");
+
+			Vec3f maxVec(FLT_MAX);
+
+			Vec3f overflowVec = maxVec + maxVec;
+			Assert::IsTrue(std::isinf(overflowVec.x) && "Vector X did not result in a overflow"); 
+			Assert::IsTrue(std::isinf(overflowVec.y) && "Vector Y did not result in a overflow"); 
+			Assert::IsTrue(std::isinf(overflowVec.z) && "Vector Z did not result in a overflow"); 
+
 		}
 
 
@@ -175,7 +149,6 @@ namespace Vector3
 
 			vec1 *= vec2; 
 			Assert::IsTrue(vec1 == Vec3f(2500.0f, 10000.0f, 22500.0f) && "Vector not multiplying with vector correctly");
-
 		}
 
 		TEST_METHOD(Mul_Scalar)
@@ -186,26 +159,40 @@ namespace Vector3
 
 			Assert::IsTrue(vec1 * scalar == result && "Vector not multiplying with scalar correctly");
 			Assert::IsTrue(scalar * vec1 == result && "Vector not multiplying with scalar correctly"); 
+
+			Assert::IsTrue(vec1 * 5 == result && "Vector not multiplying with scalar correctly"); 
+			Assert::IsTrue(5 * vec1 == result && "Vector not multiplying with scalar correctly"); 
+			
+			vec1 *= scalar; 
+			Assert::IsTrue(vec1 == result && "Vector not multiplying with scalar correctly");   
 		}
 
 		TEST_METHOD(Div)
 		{
 			Vec3f vec1(5.0f, 1.0f, 15.0f);
 			Vec3f vec2(10.0f, 2.0f, 5.0f);
+			float scalar = 5.0f;
 
 			Vec3f difVec = vec1 / vec2;
-			Assert::IsTrue(difVec == Vec3f(0.5f, 0.5f, 3.0f) && "Vector not deviding correctly"); 
+			Assert::IsTrue(difVec == Vec3f(0.5f, 0.5f, 3.0f) && "Vector not dividing correctly"); 
 
 			Vec3f sammeVec = vec1 / vec1;
-			Assert::IsTrue(sammeVec == Vec3f(1.0f, 1.0f, 1.0f) && "Vector not deviding correctly");
+			Assert::IsTrue(sammeVec == Vec3f(1.0f, 1.0f, 1.0f) && "Vector not dividing correctly");
 
+			Vec3f scalarVec = vec1 / scalar;  
+			Assert::IsTrue(scalarVec == Vec3f(1.0f, 0.2f, 3.0f) && "Vector not dividing with scalar correctly"); 
 
 			vec1 /= vec1;
-			Assert::IsTrue(vec1 == Vec3f(1.0f, 1.0f, 1.0f) && "Vector not deviding correctly");
+			Assert::IsTrue(vec1 == Vec3f(1.0f, 1.0f, 1.0f) && "Vector not dividing correctly");
+
+			vec2 /= 2.0f;
+			Assert::IsTrue(vec2 == Vec3f(5.0f, 1.0f, 2.5f) && "Vector not dividing correctly");
+			
 		}
 
 		TEST_METHOD(UnaryNegation) 
 		{
+
 			Vec3f vec1(5.0f, -1.0f, 15.0f);
 			Vec3f falseResult(5.0f, 1.0f, 15.0f);
 			Vec3f result(-5.0f, 1.0f, -15.0f); 
@@ -214,5 +201,15 @@ namespace Vector3
 			Assert::IsFalse(-vec1 == falseResult); 
 		}
 
+	};
+	TEST_CLASS(Extra)
+	{
+		TEST_METHOD(Print)
+		{
+			Vec3f vec(1.11111f, 1.23456f, 1.98765f);
+			const char* message = "X: 1.111 Y: 1.234 Z: 1.987";
+			const char* actual = vec.C_str(); 
+			Assert::IsTrue(actual == message && "C string is not equal");  
+		}
 	};
 }

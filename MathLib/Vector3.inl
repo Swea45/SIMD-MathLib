@@ -1,3 +1,4 @@
+#include "Vector3.h"
 #pragma once
 #pragma region OperatorDefinitions
 
@@ -50,6 +51,11 @@ inline Vec3f operator/(const Vec3f& aDataOne, const Vec3f& aDataTwo)
 	return _mm_and_ps(result, mask);
 }
 
+inline Vec3f operator/(const Vec3f& aDataOne, const float& aScalar)
+{
+	return _mm_div_ps(aDataOne.data, _mm_set1_ps(aScalar));
+}
+
 void operator+=(Vec3f& aDataOne, const Vec3f& aDataTwo)
 {
 	aDataOne.data = _mm_add_ps(aDataOne.data, aDataTwo.data);
@@ -65,11 +71,21 @@ void operator*=(Vec3f& aDataOne, const Vec3f& aDataTwo)
 	aDataOne.data = _mm_mul_ps(aDataOne.data, aDataTwo.data);
 }
 
+inline void operator*=(Vec3f& aDataOne, const float& aScalar)
+{
+	aDataOne.data = _mm_mul_ps(aDataOne.data, _mm_set1_ps(aScalar)); 
+}
+
 inline void operator/=(Vec3f& aDataOne, const Vec3f& aDataTwo)
 {
 	__m128 result = _mm_div_ps(aDataOne.data, aDataTwo.data);
 	__m128 mask = _mm_castsi128_ps(_mm_set_epi32(0, -1, -1, -1));
 	aDataOne.data = _mm_and_ps(result, mask);
+}
+
+inline void operator/=(Vec3f& aDataOne, const float& aScalar)
+{
+	aDataOne.data = _mm_div_ps(aDataOne.data, _mm_set1_ps(aScalar)); 
 }
 
 #pragma endregion OperatorDefinitions
