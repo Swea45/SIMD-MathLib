@@ -27,6 +27,11 @@
  * - No checks for positive or negative infinity values.
  * - Ensure all memory used in SIMD operations is properly aligned (16-byte alignment required).
  *
+ * @section related_sec Related Files
+ *
+ * - See @ref Vec2f_8h "Vec2f.h" for 2D vector configuration and switching between SIMD and scalar modes.
+ *
+ * 
  * @section license_sec License
  *
  * MIT License (or specify your own).

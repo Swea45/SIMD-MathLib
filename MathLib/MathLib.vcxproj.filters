@@ -13,6 +13,21 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Vector">
+      <UniqueIdentifier>{b31671b7-a9aa-4258-b147-ffaf50f4ec9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vector\Vector3f">
+      <UniqueIdentifier>{1b94338f-f113-445c-8add-30ab69df76f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Util">
+      <UniqueIdentifier>{68f5a2ce-a5e6-457b-a7b0-0dfdec79d579}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vector\Vector4f">
+      <UniqueIdentifier>{4b7cdd76-5fde-45e8-9ef5-3305b1d39799}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vector\Vector2f">
+      <UniqueIdentifier>{90c5664e-80a9-4a6b-a5a4-b213a1ea8aea}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -21,22 +36,57 @@
     <ClInclude Include="pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Vector3.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Vector\Vector3Inline.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="MathLibDoc.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector\Vector3f\Vector3f.h">
+      <Filter>Vector\Vector3f</Filter>
+    </ClInclude>
+    <ClInclude Include="Util\Random.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Util\Defines.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="Util\CommonMath.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector\Vector4f\Vector4f.h">
+      <Filter>Vector\Vector4f</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector\Vec2f.h">
+      <Filter>Vector</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector\Vector2f\Vector2fScalar.h">
+      <Filter>Vector\Vector2f</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Vector3.cpp">
+    <ClCompile Include="Vector\Vector3f\Vector3f.cpp">
+      <Filter>Vector\Vector3f</Filter>
+    </ClCompile>
+    <ClCompile Include="Util\CommonMath.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Vector\Vector4f\Vector4f.cpp">
+      <Filter>Vector\Vector4f</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector\Vector2f\Vector2fScalar.cpp">
+      <Filter>Vector\Vector2f</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Vector\Vector3f\Vector3f.inl">
+      <Filter>Vector\Vector3f</Filter>
+    </None>
+    <None Include="Vector\Vector4f\Vector4f.inl">
+      <Filter>Vector\Vector4f</Filter>
+    </None>
+    <None Include="Vector\Vector2f\Vector2fScalar.inl">
+      <Filter>Vector\Vector2f</Filter>
+    </None>
   </ItemGroup>
 </Project>
