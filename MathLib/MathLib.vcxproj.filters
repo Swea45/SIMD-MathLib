@@ -28,6 +28,12 @@
     <Filter Include="Vector\Vector2f">
       <UniqueIdentifier>{90c5664e-80a9-4a6b-a5a4-b213a1ea8aea}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Matrix">
+      <UniqueIdentifier>{4328b313-7201-4c84-a06c-a4e7ad0288a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Matrix\Matrix4x4f">
+      <UniqueIdentifier>{65098e62-ec21-4386-b9fa-dd04bb0b4e9b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -48,9 +54,6 @@
     <ClInclude Include="Util\Defines.h">
       <Filter>Util</Filter>
     </ClInclude>
-    <ClInclude Include="Util\CommonMath.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Vector\Vector4f\Vector4f.h">
       <Filter>Vector\Vector4f</Filter>
     </ClInclude>
@@ -60,6 +63,12 @@
     <ClInclude Include="Vector\Vector2f\Vector2fScalar.h">
       <Filter>Vector\Vector2f</Filter>
     </ClInclude>
+    <ClInclude Include="Matrix\Matrix4x4f\Matrix4x4f.h">
+      <Filter>Matrix\Matrix4x4f</Filter>
+    </ClInclude>
+    <ClInclude Include="Util\CommonMath.h">
+      <Filter>Util</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -68,14 +77,17 @@
     <ClCompile Include="Vector\Vector3f\Vector3f.cpp">
       <Filter>Vector\Vector3f</Filter>
     </ClCompile>
-    <ClCompile Include="Util\CommonMath.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Vector\Vector4f\Vector4f.cpp">
       <Filter>Vector\Vector4f</Filter>
     </ClCompile>
     <ClCompile Include="Vector\Vector2f\Vector2fScalar.cpp">
       <Filter>Vector\Vector2f</Filter>
+    </ClCompile>
+    <ClCompile Include="Matrix\Matrix4x4f\Matrix4x4f.cpp">
+      <Filter>Matrix\Matrix4x4f</Filter>
+    </ClCompile>
+    <ClCompile Include="Util\CommonMath.cpp">
+      <Filter>Util</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -87,6 +99,9 @@
     </None>
     <None Include="Vector\Vector2f\Vector2fScalar.inl">
       <Filter>Vector\Vector2f</Filter>
+    </None>
+    <None Include="Matrix\Matrix4x4f\Matrix4x4f.inl">
+      <Filter>Matrix\Matrix4x4f</Filter>
     </None>
   </ItemGroup>
 </Project>

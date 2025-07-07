@@ -48,7 +48,6 @@ namespace Vector3f
 			const Vec3f originalVector(5.0f, 10.0f, 15.0f);
 			Vec3f testVector(originalVector);
 
-
 			Assert::AreEqual(testVector.x, originalVector.x);
 			Assert::AreEqual(testVector.y, originalVector.y);
 			Assert::AreEqual(testVector.z, originalVector.z);
@@ -334,7 +333,7 @@ namespace Vector3f
 			Vec3f endVec(5.0f, -10.0f, 5.0f);
 
 			Assert::IsTrue(startVec.DistanceTo(startVec) == Vec3f(0.0f, 0.0f, 0.0f), L"DistansTo on a object on the same place is not correct");
-			Assert::IsTrue(startVec.DistanceTo(endVec) == Vec3f(0.0f, -20.0f, 10.0f), L"DistansTo on a object on the same place is not correct");
+			Assert::IsTrue(startVec.DistanceTo(endVec) == Vec3f(0.0f, -20.0f, 10.0f), L"DistansTo on a object on another position is not correct");
 
 
 		}

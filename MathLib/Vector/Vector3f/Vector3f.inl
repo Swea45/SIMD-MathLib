@@ -1,7 +1,7 @@
+#pragma once
 #include "Vector3f.h"
 #include <intrin.h>
 #include <cmath>
-#pragma once
 
 #pragma region ClassFunctions
 

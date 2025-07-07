@@ -2,7 +2,7 @@
 /**
 * @brief Vec22fScalar is a scalar vector class aligned to 8 bytes.
 *
-* @details The Vector stores data in two seperate floats. Components can be accessed via {@code x} and {@code y}.
+* @details The Vector stores data in two separate floats. Components can be accessed via {@code x} and {@code y}.
 *
 * @warning Values are not checked for infinity or NaN. Use with caution,
 * as invalid values may cause crashes or undefined behavior during operations. 
@@ -23,9 +23,9 @@ public:
 	Vector2fScalar() : x(0.0f), y(0.0f) {};
 /// @brief Copy constructor. Use another Vector2fScalar to copy data.
 	Vector2fScalar(const Vector2fScalar& aVector) : x(aVector.x), y(aVector.y) {};
-/// @brief Initialzes all components (x, y) to the same float value.
+/// @brief Initializes all components (x, y) to the same float value.
 	Vector2fScalar(float aScalar) : x(aScalar), y(aScalar) {};
-/// @brief Initialzes Vector2fScalar with individual x, y values.
+/// @brief Initializes Vector2fScalar with individual x, y values.
 	Vector2fScalar(float aX, float aY) : x(aX), y(aY) {}; 
 /// @}
 // End Constructors Group
@@ -40,20 +40,75 @@ public:
 * @return The squared length as a float.
 */
 	inline float LengthSqr();
-
+/**
+ * @brief Computes the length (magnitude) of the vector.
+ *
+ * @details Calculates the Euclidean norm by taking the square root of the sum of the squares
+ * of the vector's components.
+ *
+ * @return The length (magnitude) as a float.
+ */
 	inline float Length();
 
+/**
+ * @brief Returns a normalized copy of the vector.
+ *
+ * @details This function returns a unit vector in the same direction as the original,
+ * with a length of 1. If the original vector has zero length, the result is undefined.
+ *
+ * @return A new Vec3f representing the normalized vector.
+ *
+ * @note No check is performed for zero-length vectors. Normalizing a zero vector may produce invalid results.
+ */
 	inline Vector2fScalar GetNormalized();
-
+/**
+ * @brief Normalizes the vector in place.
+ *
+ * @details Scales the vector so that its length becomes 1, preserving its direction.
+ * If the vector has zero length, the result is undefined.
+ *
+ * @note No check is performed for zero-length vectors. Normalizing a zero vector may produce invalid results.
+ */
 	inline void Normalize();
-
+/**
+ * @brief Computes the dot product between this vector and another.
+ *
+ * @details The dot product is a scalar value equal to the sum of the products of corresponding components.
+ * Useful for calculating angles between vectors or projecting one vector onto another.
+ *
+ * @param aVector The other vector to compute the dot product with.
+ * @return The dot product as a float.
+ */
 	inline float Dot(const Vector2fScalar& aVector);
-
+/**
+ * @brief Computes the distance from this vector to another.
+ *
+ * @details Calculates the Euclidean distance between the current vector and the specified vector.
+ *
+ * @param aVector The target vector to measure distance to.
+ * @return A Vec3f representing the vector difference (not the scalar distance).
+ *
+ * @note If you want the scalar distance (i.e., the length of the vector between the two points),
+ * consider using {@code (a - b).Length()} instead.
+ */
 	inline Vector2fScalar DistanceTo(const Vector2fScalar& aVector);
-
+	/**
+* @brief Returns a copy of this vector rotated around a specified angle.
+*
+* @details Performs a 2D rotation of the vector using the right-hand rule.
+*
+* @param aAngle The angle of rotation in radians.
+* @return A new Vector2fScalar representing the rotated vector.
+*/
 	inline Vector2fScalar GetRotated(float aAngle);
-
-	inline void Rotated();
+/**
+ * @brief Rotates this vector in place around by a given angle.
+ *
+ * @details The rotation is performed in the XY plane, using the right-hand rule.
+ *
+ * @param aAngle The angle of rotation in radians.
+ */
+	inline void Rotate(float aAngle);
 
 };
 
