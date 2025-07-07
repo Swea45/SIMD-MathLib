@@ -243,10 +243,10 @@ namespace Matrix4x4f
 			int runs = 1000;
 			for (int i = 0; i < runs; i++)
 			{
-				float result[16];
+				float result[16]{};
 				for (int i = 0; i < 16; i++)
 				{
-					valueOne = BB::Random(-siz0oe, size);
+					valueOne = BB::Random(-size, size);
 					valueTwo = BB::Random(-size, size);
 
 					mat1.data[i] = valueOne;
@@ -260,8 +260,52 @@ namespace Matrix4x4f
 				{
 					Assert::AreEqual(result[i], resultMatrix.data[i], L"Matrix adding is not done correctly");
 				}
+
+				mat1 += mat2;
+				for (int i = 0; i < 16; i++)
+				{
+					Assert::AreEqual(result[i], mat1.data[i], L"Matrix adding is not done correctly"); 
+				}
+
 			}
 		}
 
+		TEST_METHOD(SUB)
+		{
+			Mat4x4f mat1;
+			Mat4x4f mat2;
+
+			float valueOne = 0.0f;
+			float valueTwo = 0.0f;
+
+			float size = 1000.0f;
+			int runs = 1000;
+			for (int i = 0; i < runs; i++)
+			{
+				float result[16]{};
+				for (int i = 0; i < 16; i++)
+				{
+					valueOne = BB::Random(-size, size);
+					valueTwo = BB::Random(-size, size);
+
+					mat1.data[i] = valueOne;
+					mat2.data[i] = valueTwo;
+					result[i] = valueOne - valueTwo;
+				}
+
+				Mat4x4f resultMatrix = mat1 - mat2;
+
+				for (int i = 0; i < 16; i++)
+				{
+					Assert::AreEqual(result[i], resultMatrix.data[i], L"Matrix adding is not done correctly");
+				}
+
+				mat1 -= mat2;
+				for (int i = 0; i < 16; i++)
+				{
+					Assert::AreEqual(result[i], mat1.data[i], L"Matrix adding is not done correctly"); 
+				}
+			}
+		}
 	};
 }

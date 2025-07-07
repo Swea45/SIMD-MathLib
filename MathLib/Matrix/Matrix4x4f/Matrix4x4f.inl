@@ -80,7 +80,7 @@ inline bool operator!=(const Mat4x4f& aMatrixOne, const Mat4x4f& aMatrixTwo)
 	return result != 0xF;
 }
 
-inline Mat4x4f operator+(const Mat4x4f& aMatrixOne, const Mat4x4f& aMatrixTwo)
+inline Mat4x4f operator+(const Mat4x4f& __restrict aMatrixOne, const Mat4x4f& __restrict aMatrixTwo)
 {
 	return { _mm_add_ps(aMatrixOne.row[0], aMatrixTwo.row[0]),
 			 _mm_add_ps(aMatrixOne.row[1], aMatrixTwo.row[1]),
@@ -88,7 +88,7 @@ inline Mat4x4f operator+(const Mat4x4f& aMatrixOne, const Mat4x4f& aMatrixTwo)
 			 _mm_add_ps(aMatrixOne.row[3], aMatrixTwo.row[3]), };
 }
 
-inline Mat4x4f operator-(const Mat4x4f& aMatrixOne, const Mat4x4f& aMatrixTwo)
+inline Mat4x4f operator-(const Mat4x4f& __restrict aMatrixOne, const Mat4x4f& __restrict aMatrixTwo)
 {
 	return { _mm_sub_ps(aMatrixOne.row[0], aMatrixTwo.row[0]),
 			 _mm_sub_ps(aMatrixOne.row[1], aMatrixTwo.row[1]),
@@ -147,6 +147,22 @@ inline Mat4x4f operator/(const Mat4x4f& aMatrixOne, float aScalar)
 			 _mm_div_ps(aMatrixOne.row[1], scalar),
 			 _mm_div_ps(aMatrixOne.row[2], scalar),
 			 _mm_div_ps(aMatrixOne.row[3], scalar), };
+}
+
+inline void operator+=(Mat4x4f& __restrict aMatrixOne, const Mat4x4f& __restrict aMatrixTwo)
+{
+	for (int i = 0; i < MATRIX4X4_ROW_AMOUNT; i++)
+	{
+		aMatrixOne.row[i] = _mm_add_ps(aMatrixOne.row[i], aMatrixTwo.row[i]);
+	}
+}
+
+inline void operator-=(Mat4x4f& __restrict aMatrixOne, const Mat4x4f& __restrict aMatrixTwo)
+{
+	for (int i = 0; i < MATRIX4X4_ROW_AMOUNT; i++)
+	{
+		aMatrixOne.row[i] = _mm_sub_ps(aMatrixOne.row[i], aMatrixTwo.row[i]);
+	}
 }
 
 

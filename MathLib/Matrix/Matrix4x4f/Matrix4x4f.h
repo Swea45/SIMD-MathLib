@@ -59,8 +59,9 @@ private:
 inline bool operator==(const Mat4x4f& aMatrixOne, const Mat4x4f& aMatrixTwo);
 inline bool operator!=(const Mat4x4f& aMatrixOne, const Mat4x4f& aMatrixTwo);
 
-inline Mat4x4f operator+(const Mat4x4f& aMatrixOne, const Mat4x4f& aMatrixTwo);
-inline Mat4x4f operator-(const Mat4x4f& aMatrixOne, const Mat4x4f& aMatrixTwo);
+inline Mat4x4f operator+(const Mat4x4f& __restrict aMatrixOne, const Mat4x4f& __restrict aMatrixTwo);
+inline Mat4x4f operator-(const Mat4x4f& __restrict aMatrixOne, const Mat4x4f& __restrict aMatrixTwo);
+
 
 inline Mat4x4f operator*(const Mat4x4f& aMatrixOne, Mat4x4f aMatrixTwo);
 inline Mat4x4f operator*(const Mat4x4f& aMatrixOne, float aScalar);  
@@ -68,5 +69,7 @@ inline Mat4x4f operator*(float aScalar, const Mat4x4f& aMatrixOne);
 
 inline Mat4x4f operator/(const Mat4x4f& aMatrixOne, float aScalar);  
 
+inline void operator+=(Mat4x4f& __restrict aMatrixOne, const Mat4x4f& __restrict aMatrixTwo);
+inline void operator-=(Mat4x4f& __restrict aMatrixOne, const Mat4x4f& __restrict aMatrixTwo);
 
 #include "Matrix4x4f.inl"
